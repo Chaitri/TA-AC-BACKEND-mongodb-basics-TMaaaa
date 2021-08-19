@@ -40,8 +40,8 @@ use India
 
 - check list of databases to see newly created database.
 
- db.adminCommand( { listDatabases: 1 } )
+show dbs
 
 - check which database you are currently connected to ?
 
-db.getMongo()
+db
