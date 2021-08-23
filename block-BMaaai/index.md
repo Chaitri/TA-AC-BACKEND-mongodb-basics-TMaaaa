@@ -26,22 +26,26 @@ Go to `https://www.json-generator.com/`
 ```js
 // paste this on left panel
 [
-  "{{repeat(30)}}",
+  '{{repeat(30)}}',
   {
-    _id: "{{objectId()}}",
-    age: "{{integer(20, 40)}}",
-    name: "{{firstName()}} {{surname()}}",
-    gender: "{{gender()}}",
-    company: "{{company().toUpperCase()}}",
-    email: "{{email()}}",
-    phone: "+1 {{phone()}}",
-    tags: ["{{repeat(2)}}", '{{lorem(1, "words")}}'],
+    _id: '{{objectId()}}',
+    age: '{{integer(20, 40)}}',
+    name: '{{firstName()}} {{surname()}}',
+    gender: '{{gender()}}',
+    company: '{{company().toUpperCase()}}',
+    email: '{{email()}}',
+    phone: '+1 {{phone()}}',
+    tags: ['{{repeat(2)}}', '{{lorem(1, "words")}}'],
   },
 ];
 ```
 
 - download it on `Desktop`
 - import it into mongodb `test` database into a collection named `users`
+
+```
+mongoimport --db=test --collection=users --file=C:\Users\chait\Downloads\generated.json --jsonArray
+```
 
 #### Export data from mongodb server to local system in json format using
 
@@ -55,6 +59,10 @@ mongoexport --db state --collection cities --out ~/Desktop/states/city.json --js
 
 Export `users` collection from `test` database onto `Desktop` in a file named `exported.json`.
 
+```
+mongoexport --db=test --collection=users --out=C:\Users\chait\Desktop\exported.json --jsonArray
+```
+
 #### Import from csv file
 
 ```
@@ -66,3 +74,8 @@ mongoimport -d DB_NAME -c COLLECTION_NAME --type csv --file elections.csv(file l
 Generate mock csv data from `https://www.convertcsv.com/generate-test-data.htm`
 
 - insert this mock csv data into `test` database into a collection named `students`
+
+```
+mongoimport -d test -c students --type csv --file C:\Users\chait\Downloads\convertcsv.csv
+--headerline
+```
